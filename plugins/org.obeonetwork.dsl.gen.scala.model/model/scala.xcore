@@ -1,7 +1,7 @@
 @Ecore(nsURI="http://www.obeonetwork.org/dsl/scala", nsPrefix="scala")
 @GenModel(editDirectory="/org.obeonetwork.dsl.gen.scala.model.edit/src-gen")
 @GenModel(editorDirectory="/org.obeonetwork.dsl.gen.scala.model.editor/src-gen")
-package org.obeonetwork.dsl.scala
+package org.obeonetwork.dsl.scalamodel
  
 interface Element {
 	String ownedComment
@@ -33,13 +33,13 @@ interface ExtendableClassifier extends Classifier {
 
 class Class extends CaseClassifier, ExtendableClassifier {
 	contains Constructor[] constructors
-	refers Object companionObject
+	refers Object companionObject opposite companionClass
 	boolean final
 	boolean ^abstract
 }
 
 class Object extends CaseClassifier {
-	refers Class companionClass
+	refers Class companionClass opposite companionObject
 }
 
 class Trait extends ExtendableClassifier {

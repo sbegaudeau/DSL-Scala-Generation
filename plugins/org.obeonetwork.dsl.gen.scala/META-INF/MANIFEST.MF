@@ -5,8 +5,8 @@ Bundle-SymbolicName: org.obeonetwork.dsl.gen.scala
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.gen.scala.DSL2ScalaPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime, 
- org.obeonetwork.dsl.gen.scala.model, 
+Require-Bundle: org.eclipse.core.runtime,
+ org.obeonetwork.dsl.gen.scala.model;bundle-version="1.0.0",
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,

@@ -351,8 +351,8 @@ public class Dsl2scala extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        if (!isInWorkspace(org.obeonetwork.dsl.scala.ScalaPackage.class)) {
-            resourceSet.getPackageRegistry().put(org.obeonetwork.dsl.scala.ScalaPackage.eINSTANCE.getNsURI(), org.obeonetwork.dsl.scala.ScalaPackage.eINSTANCE);
+        if (!isInWorkspace(org.obeonetwork.dsl.scalamodel.ScalamodelPackage.class)) {
+            resourceSet.getPackageRegistry().put(org.obeonetwork.dsl.scalamodel.ScalamodelPackage.eINSTANCE.getNsURI(), org.obeonetwork.dsl.scalamodel.ScalamodelPackage.eINSTANCE);
         }
         
         /*

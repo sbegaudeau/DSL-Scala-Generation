@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.obeonetwork.dsl.scala,
- org.obeonetwork.dsl.scala.impl,
- org.obeonetwork.dsl.scala.util
+Export-Package: org.obeonetwork.dsl.scalamodel,
+ org.obeonetwork.dsl.scalamodel.impl,
+ org.obeonetwork.dsl.scalamodel.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;visibility:=reexport

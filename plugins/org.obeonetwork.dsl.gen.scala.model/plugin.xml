@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.obeonetwork.org/dsl/scala"
-            class="org.obeonetwork.dsl.scala.ScalaPackage"
+            class="org.obeonetwork.dsl.scalamodel.ScalamodelPackage"
             genModel="model/scala.xcore"/>
    </extension>
 
