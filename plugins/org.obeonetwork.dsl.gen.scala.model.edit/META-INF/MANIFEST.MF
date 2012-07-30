@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.obeonetwork.dsl.gen.scala.model.edit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.obeonetwork.dsl.scalamodel.provider.ScalamodelEditPlugin
+Bundle-Activator: org.obeonetwork.dsl.scalamodel.provider.ScalamodelEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

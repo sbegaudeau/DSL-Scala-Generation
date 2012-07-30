@@ -13,7 +13,7 @@ Other contributors :
 /]
 [module classBody('http://www.obeonetwork.org/dsl/scala') extends org::obeonetwork::dsl::gen::scala::files::classifierBody/]
 
-[template public genClassifierBody(aClassifier : Classifier) overrides genClassifierBody ? (aClassifier.oclIsKindOf(Object))]
+[template public genClassifierBody(aClassifier : Classifier) overrides genClassifierBody ? (aClassifier.oclIsKindOf(Class))]
 [let aClass : Class = aClassifier.oclAsType(Class)]
 [aClass.genClassifierDocumentation()/]
 [aClass.genFinal()/][aClass.genAbstract()/][aClass.genSealed()/][aClass.genCase()/]class [aClass.genName()/] [aClass.genDefaultConstructor()/][aClass.genInheritanceSpace()/] {
