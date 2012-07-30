@@ -11,7 +11,7 @@ Original contributor :
 Other contributors : 
  	*
 /]
-[module logger('http://github.com/sbegaudeau/acceleo/scalametamodel/2011/01')/]
+[module logger('http://www.obeonetwork.org/dsl/scala')/]
 
 [comment 
 	* Logs an error message in the console.
