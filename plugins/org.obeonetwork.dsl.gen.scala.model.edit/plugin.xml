@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
             uri="http://www.obeonetwork.org/dsl/scala"
-            class="org.obeonetwork.dsl.scala.provider.ScalaItemProviderAdapterFactory"
+            class="org.obeonetwork.dsl.scalamodel.provider.ScalamodelItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
