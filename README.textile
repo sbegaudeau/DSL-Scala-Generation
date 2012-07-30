@@ -1,0 +1,14 @@
+h1. Welcome to DSL to Scala Generation by Obeo Network
+
+This project provides a DSL to Scala generator created with Acceleo to generate Scala code from Domain specific models.
+
+These plugins are released under the EPL Open-Souce License.
+
+
+More details about this generator can be found here:
+* "http://www.obeonetwork.com/page/dsl-to-scala-generator":http://www.obeonetwork.com/page/dsl-to-scala-generator
+
+
+
+
+

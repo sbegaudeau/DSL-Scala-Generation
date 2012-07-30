@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.obeonetwork.dsl.scala.presentation.ScalaModelWizardID"
+            name="%_UI_ScalaModelWizard_label"
+            class="org.obeonetwork.dsl.scala.presentation.ScalaModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ScalaModelFile.gif">
+         <description>%_UI_ScalaModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.obeonetwork.dsl.scala.presentation.ScalaEditorID"
+            name="%_UI_ScalaEditor_label"
+            icon="icons/full/obj16/ScalaModelFile.gif"
+            extensions="scala"
+            class="org.obeonetwork.dsl.scala.presentation.ScalaEditor"
+            contributorClass="org.obeonetwork.dsl.scala.presentation.ScalaActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

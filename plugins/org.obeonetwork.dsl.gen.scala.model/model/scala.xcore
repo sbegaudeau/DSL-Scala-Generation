@@ -1,0 +1,104 @@
+@Ecore(nsURI="http://www.obeonetwork.org/dsl/scala", nsPrefix="scala")
+@GenModel(editDirectory="/org.obeonetwork.dsl.gen.scala.model.edit/src-gen")
+@GenModel(editorDirectory="/org.obeonetwork.dsl.gen.scala.model.editor/src-gen")
+package org.obeonetwork.dsl.scala
+ 
+interface Element {
+	String ownedComment
+}
+
+interface NamedElement extends Element {
+	String name
+}
+
+interface TypedElement extends Element {
+	contains Type ^type
+	boolean optional
+}
+
+interface Classifier extends NamedElement, Type {
+	contains Field[] fields
+	contains Method[] methods
+	refers ExtendableClassifier superType
+	refers Trait[] traits
+}
+
+interface CaseClassifier extends Classifier, VisibilityScope {
+	boolean ^case
+}
+
+interface ExtendableClassifier extends Classifier {
+	boolean sealed
+}
+
+class Class extends CaseClassifier, ExtendableClassifier {
+	contains Constructor[] constructors
+	refers Object companionObject
+	boolean final
+	boolean ^abstract
+}
+
+class Object extends CaseClassifier {
+	refers Class companionClass
+}
+
+class Trait extends ExtendableClassifier {
+	
+}
+
+class Field extends NamedElement, TypedElement {
+	boolean constructorProperty
+	boolean final
+	boolean overriding
+	contains Visibility visibility
+}
+
+class Constructor extends Element {
+	contains Parameter[] parameters
+}
+
+class Method extends NamedElement {
+	contains Signature signature
+	boolean ^abstract
+	boolean final
+	boolean overriding
+	contains Visibility visibility
+}
+
+class Signature extends TypedElement, Type {
+	contains Parameter[] parameters
+}
+
+class Model extends NamedElement {
+	contains Package[] packages
+}
+
+class Parameter extends NamedElement, TypedElement {
+}
+
+class Package extends NamedElement, VisibilityScope {
+	contains File[] files
+	contains Package[] subPackages opposite superPackage
+	refers Package superPackage opposite subPackages
+}
+
+class File extends NamedElement {
+	contains Classifier[] classifiers
+}
+
+class Type extends NamedElement {
+}
+
+enum VisibilityKind {
+	PUBLIC = 0
+	PROTECTED = 1
+	PRIVATE = 2
+}
+
+class Visibility {
+	VisibilityKind kind
+	refers VisibilityScope scope
+}
+
+class VisibilityScope {
+}
