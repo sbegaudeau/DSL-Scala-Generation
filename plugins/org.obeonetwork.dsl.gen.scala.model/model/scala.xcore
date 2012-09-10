@@ -12,7 +12,7 @@ interface NamedElement extends Element {
 }
 
 interface TypedElement extends Element {
-	contains Type ^type
+	refers Type ^type
 	boolean optional
 }
 

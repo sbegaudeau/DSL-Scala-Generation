@@ -69,6 +69,7 @@ public class FieldItemProvider
 
       addOwnedCommentPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
+      addTypePropertyDescriptor(object);
       addOptionalPropertyDescriptor(object);
       addConstructorPropertyPropertyDescriptor(object);
       addFinalPropertyDescriptor(object);
@@ -119,6 +120,29 @@ public class FieldItemProvider
          false,
          false,
          ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Type feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_TypedElement_type_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"),
+         ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
+         true,
+         false,
+         true,
+         null,
          null,
          null));
   }
@@ -229,7 +253,6 @@ public class FieldItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE);
       childrenFeatures.add(ScalamodelPackage.Literals.FIELD__VISIBILITY);
     }
     return childrenFeatures;
@@ -298,7 +321,6 @@ public class FieldItemProvider
       case ScalamodelPackage.FIELD__OVERRIDING:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case ScalamodelPackage.FIELD__TYPE:
       case ScalamodelPackage.FIELD__VISIBILITY:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
@@ -317,31 +339,6 @@ public class FieldItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createClass()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createObject()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createTrait()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createSignature()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createType()));
 
     newChildDescriptors.add
       (createChildParameter

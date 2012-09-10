@@ -64,7 +64,7 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
   protected String ownedComment = OWNED_COMMENT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
@@ -174,6 +174,16 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
    */
   public Type getType()
   {
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (Type)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScalamodelPackage.SIGNATURE__TYPE, oldType, type));
+      }
+    }
     return type;
   }
 
@@ -182,16 +192,9 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
+  public Type basicGetType()
   {
-    Type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScalamodelPackage.SIGNATURE__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return type;
   }
 
   /**
@@ -201,18 +204,10 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
    */
   public void setType(Type newType)
   {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.SIGNATURE__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.SIGNATURE__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.SIGNATURE__TYPE, newType, newType));
+    Type oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.SIGNATURE__TYPE, oldType, type));
   }
 
   /**
@@ -285,8 +280,6 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
   {
     switch (featureID)
     {
-      case ScalamodelPackage.SIGNATURE__TYPE:
-        return basicSetType(null, msgs);
       case ScalamodelPackage.SIGNATURE__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
     }
@@ -306,7 +299,8 @@ public class SignatureImpl extends MinimalEObjectImpl.Container implements Signa
       case ScalamodelPackage.SIGNATURE__OWNED_COMMENT:
         return getOwnedComment();
       case ScalamodelPackage.SIGNATURE__TYPE:
-        return getType();
+        if (resolve) return getType();
+        return basicGetType();
       case ScalamodelPackage.SIGNATURE__OPTIONAL:
         return isOptional();
       case ScalamodelPackage.SIGNATURE__NAME:

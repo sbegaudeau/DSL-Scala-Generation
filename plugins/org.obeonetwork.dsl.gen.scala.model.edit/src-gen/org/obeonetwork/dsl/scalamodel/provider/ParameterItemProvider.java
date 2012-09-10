@@ -69,6 +69,7 @@ public class ParameterItemProvider
 
       addOwnedCommentPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
+      addTypePropertyDescriptor(object);
       addOptionalPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -121,6 +122,29 @@ public class ParameterItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Type feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_TypedElement_type_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_type_feature", "_UI_TypedElement_type"),
+         ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
+         true,
+         false,
+         true,
+         null,
+         null,
+         null));
+  }
+
+  /**
    * This adds a property descriptor for the Optional feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,39 +165,6 @@ public class ParameterItemProvider
          ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
          null,
          null));
-  }
-
-  /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-  {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE);
-    }
-    return childrenFeatures;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
-  {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
-
-    return super.getChildFeature(object, child);
   }
 
   /**
@@ -222,9 +213,6 @@ public class ParameterItemProvider
       case ScalamodelPackage.PARAMETER__OPTIONAL:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case ScalamodelPackage.PARAMETER__TYPE:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
     }
     super.notifyChanged(notification);
   }
@@ -240,31 +228,6 @@ public class ParameterItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createClass()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createObject()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createTrait()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createSignature()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (ScalamodelPackage.Literals.TYPED_ELEMENT__TYPE,
-         ScalamodelFactory.eINSTANCE.createType()));
   }
 
   /**

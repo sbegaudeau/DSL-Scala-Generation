@@ -80,7 +80,7 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
@@ -253,6 +253,16 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
    */
   public Type getType()
   {
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (Type)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScalamodelPackage.FIELD__TYPE, oldType, type));
+      }
+    }
     return type;
   }
 
@@ -261,16 +271,9 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
+  public Type basicGetType()
   {
-    Type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScalamodelPackage.FIELD__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return type;
   }
 
   /**
@@ -280,18 +283,10 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
    */
   public void setType(Type newType)
   {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.FIELD__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.FIELD__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.FIELD__TYPE, newType, newType));
+    Type oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.FIELD__TYPE, oldType, type));
   }
 
   /**
@@ -444,8 +439,6 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
-      case ScalamodelPackage.FIELD__TYPE:
-        return basicSetType(null, msgs);
       case ScalamodelPackage.FIELD__VISIBILITY:
         return basicSetVisibility(null, msgs);
     }
@@ -467,7 +460,8 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
       case ScalamodelPackage.FIELD__NAME:
         return getName();
       case ScalamodelPackage.FIELD__TYPE:
-        return getType();
+        if (resolve) return getType();
+        return basicGetType();
       case ScalamodelPackage.FIELD__OPTIONAL:
         return isOptional();
       case ScalamodelPackage.FIELD__CONSTRUCTOR_PROPERTY:

@@ -75,7 +75,7 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
@@ -178,6 +178,16 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    */
   public Type getType()
   {
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (Type)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ScalamodelPackage.PARAMETER__TYPE, oldType, type));
+      }
+    }
     return type;
   }
 
@@ -186,16 +196,9 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
+  public Type basicGetType()
   {
-    Type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScalamodelPackage.PARAMETER__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return type;
   }
 
   /**
@@ -205,18 +208,10 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    */
   public void setType(Type newType)
   {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.PARAMETER__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScalamodelPackage.PARAMETER__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.PARAMETER__TYPE, newType, newType));
+    Type oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ScalamodelPackage.PARAMETER__TYPE, oldType, type));
   }
 
   /**
@@ -248,22 +243,6 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ScalamodelPackage.PARAMETER__TYPE:
-        return basicSetType(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -273,7 +252,8 @@ public class ParameterImpl extends MinimalEObjectImpl.Container implements Param
       case ScalamodelPackage.PARAMETER__NAME:
         return getName();
       case ScalamodelPackage.PARAMETER__TYPE:
-        return getType();
+        if (resolve) return getType();
+        return basicGetType();
       case ScalamodelPackage.PARAMETER__OPTIONAL:
         return isOptional();
     }

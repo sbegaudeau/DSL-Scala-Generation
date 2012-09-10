@@ -162,7 +162,7 @@ public interface ScalamodelPackage extends EPackage
   int TYPED_ELEMENT__OWNED_COMMENT = ELEMENT__OWNED_COMMENT;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -817,7 +817,7 @@ public interface ScalamodelPackage extends EPackage
   int FIELD__NAME = NAMED_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1045,7 +1045,7 @@ public interface ScalamodelPackage extends EPackage
   int SIGNATURE__OWNED_COMMENT = TYPED_ELEMENT__OWNED_COMMENT;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1182,7 +1182,7 @@ public interface ScalamodelPackage extends EPackage
   int PARAMETER__NAME = NAMED_ELEMENT__NAME;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1529,10 +1529,10 @@ public interface ScalamodelPackage extends EPackage
   EClass getTypedElement();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.obeonetwork.dsl.scalamodel.TypedElement#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.obeonetwork.dsl.scalamodel.TypedElement#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @return the meta object for the reference '<em>Type</em>'.
    * @see org.obeonetwork.dsl.scalamodel.TypedElement#getType()
    * @see #getTypedElement()
    * @generated
@@ -2120,7 +2120,7 @@ public interface ScalamodelPackage extends EPackage
     EClass TYPED_ELEMENT = eINSTANCE.getTypedElement();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
